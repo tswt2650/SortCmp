@@ -3,7 +3,7 @@
 #include <time.h>
 using namespace std;
 
-const int mmm = 1e6+5;
+const int mmm = 1e6 + 5;
 long long a[mmm], b[mmm];
 int n = 1e6;
 
@@ -14,8 +14,8 @@ void mergesort(int l, int r) ;
 void nhap(char x[])
 {
     char s[15] = "test";
-    strcat(s,x);
-    strcat(s,".txt");
+    strcat(s, x);
+    strcat(s, ".txt");
     ifstream input (s);
     for (int i = 0; i < n; i++) input >> a[i];
     input.close();
@@ -62,11 +62,11 @@ void tgtt(char x[])
 
 int main()
 {
-    char z[5], a1[20] = "HeapSort", a2[20] = "MergeSort",a3[20] = "SortCpp",a4[20] = "Quicksort";
-    output << "test\t\tHeapSort\t\tMergeSort\t\tSortInCppLib\tQuickSort";
-    for (int i = 1; i<=10; i++)
+    char z[5], a1[20] = "Quicksort", a2[20] = "HeapSort", a3[20] = "MergeSort", a4[20] = "SortCpp";
+    output << "test\t\tQuickSort\t\tHeapSort\t\tMergeSort\t\tSortInCppLib";
+    for (int i = 1; i <= 10; i++)
     {
-        itoa(i,z,10);
+        itoa(i, z, 10);
         output << endl << i;
 
         nhap(z);
@@ -82,24 +82,24 @@ int main()
         tgtt(a4);
     }
     output.close();
-	return 0;
+    return 0;
 }
 
-void quicksort(int l,int r)
+void quicksort(int l, int r)
 {
-    if (l==r) return;
+    if (l == r) return;
     else
     {
-        long long x = a[(l+r)/2];
+        long long x = a[(l + r) / 2];
         int i = l, j = r;
-        while(i<=j)
+        while (i <= j)
         {
-            while(a[i] < x) ++i;
-            while(a[j] > x) --j;
+            while (a[i] < x) i++;
+            while (a[j] > x) j--;
             if (i<=j)
             {
                 swap(a[i], a[j]);
-                ++i; --j;
+                i++; j--;
             }
         }
         if (l < j) quicksort(l, j);
@@ -110,18 +110,18 @@ void quicksort(int l,int r)
 int s;
 void upper(int i)
 {
-    if(i == 1) return;
-    if (b[i] < b[i/2])
+    if (i == 1) return;
+    if (b[i] < b[i / 2])
     {
-        swap(b[i], b[i/2]);
-        upper(i/2);
+        swap(b[i], b[i / 2]);
+        upper(i / 2);
     }
 }
 void lower(int i)
 {
     int x = i;
-    if (i*2 <= s && b[x] > b[i*2]) x = 2*i;
-    if (i*2 + 1 <= s && b[x] > b[i*2 + 1]) x = i*2 + 1;
+    if (i * 2 <= s && b[x] > b[i * 2]) x = 2 * i;
+    if (i * 2 + 1 <= s && b[x] > b[i * 2 + 1]) x = i * 2 + 1;
     if (x != i)
     {
         swap(b[x], b[i]);
@@ -130,7 +130,7 @@ void lower(int i)
 }
 void push(int g)
 {
-    b[++s] = g;
+    b[s++] = g;
     upper(s);
 }
 void pop()
@@ -140,23 +140,23 @@ void pop()
 }
 void heapsort(int n)
 {
-    for(int i = 0; i < n; i++) push(a[i]);
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) push(a[i]);
+    for (int i = 0; i < n; i++)
     {
         a[i] = b[1];
         pop();
     }
 }
 
-void mergesort(int l,int r)
-{
-    if (l==r) return;
+void mergesort(int l, int r)
+{ 
+    if (l == r) return;
     else
     {
-        int x = (l+r)/2;
+        int x = (l + r) / 2;
         mergesort(l, x);
         mergesort(x + 1, r);
-        for(int i = l; i < r+1; i++) b[i] = a[i];
+        for (int i = l; i < r + 1; i++) b[i] = a[i];
         merge(b + l, b + x + 1, b + x + 1, b + r + 1, a + l);
     }
 }
