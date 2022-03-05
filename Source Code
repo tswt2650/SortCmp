@@ -17,7 +17,7 @@ void nhap(char x[])
     strcat(s,x);
     strcat(s,".txt");                            //line 16 -> 18: tao xau s co dang ["test" + x + ".txt"]
     ifstream input (s);
-    for (int i = 0; i < mmm; i++) input >> a[i];
+    for (int i = 0; i < n; i++) input >> a[i];
     input.close();
 }
 ofstream output ("result.txt");
