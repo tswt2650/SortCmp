@@ -7,21 +7,21 @@ const int mmm = 1e6 + 5;
 long long a[mmm], b[mmm];
 int n = 1e6;
 
-void quicksort(int l, int r);
-void heapsort(int n);
-void mergesort(int l, int r) ;
+void quicksort(int l, int r);       // line 88 -> 108
+void heapsort(int n);               // lỉne 110 -> 149
+void mergesort(int l, int r) ;      // line 151 -> 162
 
 void nhap(char x[])
 {
     char s[15] = "test";
     strcat(s, x);
-    strcat(s, ".txt");
+    strcat(s, ".txt");              // tao xau s co dang: "test" + x + ".txt"
     ifstream input (s);
     for (int i = 0; i < n; i++) input >> a[i];
     input.close();
 }
 ofstream output ("result.txt");
-void tgtt(char x[])
+void tgtt(char x[])                 // tinh va ghi thoi gian thuc hien thuat toan
 {
     clock_t bd, kt;
     double time_use;
